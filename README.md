@@ -29,6 +29,89 @@ MLP has the following features:
 Ø  Learning process –backpropagation
 
 Ø  Computationally efficient method
+## PROGRAM
+Name :DHARSHINI.S
+Register Number : 212221220009
+## Importing libraries
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder,StandardScaler
+from sklearn.neural_network import MLPClassifier
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+## Reading Dataset
+df = pd.read_csv("./IRIS.csv")
+df
+## Assiging X and Y values
+# Takes first 4 columns and assign them to variable "X"
+# X = df.iloc[:,:4]
+X = df[['sepal_length', 'sepal_width', 'petal_length', 'petal_width']]
+
+# Takes first 5th columns and assign them to variable "Y".
+# y = df.select_dtypes(include=[object])  
+y = df['species']
+## First five values of X and Y
+X.head()
+
+y.head()
+## Unique values in Y
+print(y.unique())
+## Transforming Categorical into numerical values for Y
+le = LabelEncoder()
+y = le.fit_transform(y)
+
+y
+## Splitting Dataset for Training and Testing
+# 80% - training data and 20% - test data)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20)
+## Normalizing X values
+# Feature scaling
+scaler = StandardScaler()  
+scaler.fit(X_train)
+
+X_train = scaler.transform(X_train)  
+X_test = scaler.transform(X_test)
+## Creating MLP and classifing
+mlp = MLPClassifier(hidden_layer_sizes=(10, 10, 10), max_iter=1000)  
+mlp.fit(X_train, y_train)  
+predictions = mlp.predict(X_test) 
+## Predictions
+print(predictions)
+## Accuracy
+accuracy_score(y_test,predictions)
+## Confusion Matrix
+print(confusion_matrix(y_test,predictions))
+## Classification Report
+print(classification_report(y_test,predictions))
+## OUTPUT
+### Reading Dataset
+![image](https://user-images.githubusercontent.com/113699377/201140329-4ae9d40a-2a71-4dc5-983f-4f8c90e1e000.png)
+### First five values of x
+![image](https://user-images.githubusercontent.com/113699377/201140763-e5ee92ee-738b-41df-915b-8376f2f4d40d.png)
+### First five values of Y
+![image](https://user-images.githubusercontent.com/113699377/201140948-b07aa9b8-3ada-4523-b1f7-ed0265d0343f.png)
+### Unique values in Y
+![image](https://user-images.githubusercontent.com/113699377/201141121-1748c679-115a-4482-98ec-cfd6e822c7e6.png)
+### Transforming Categorical into numerical values for Y
+![image](https://user-images.githubusercontent.com/113699377/201141408-d06c9965-b18e-4fcc-8799-ef3797c31c3f.png)
+### Predictions
+![image](https://user-images.githubusercontent.com/113699377/201141742-aa65cb17-3e69-4ecd-9888-a27f35d5495b.png)
+### Accuracy
+![image](https://user-images.githubusercontent.com/113699377/201141913-3226d7ec-d945-4746-8a01-f568c423ec41.png)
+### Confusion Matrix
+![image](https://user-images.githubusercontent.com/113699377/201142047-f7d3f14d-a919-4f01-badd-ea4e66ff9e1e.png)
+### Classification Report
+![image](https://user-images.githubusercontent.com/113699377/201142159-c895cc50-9e3c-456d-8807-6575a493fc58.png)
+## RESULT
+Thus a Multilayer Perceptron with Backpropagation is implemented for Multi classification
+
+
+
+
+
+
+
+
+
 
 ![image 10](https://user-images.githubusercontent.com/112920679/198804559-5b28cbc4-d8f4-4074-804b-2ebc82d9eb4a.jpg)
 
