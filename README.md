@@ -30,8 +30,10 @@ MLP has the following features:
 
 Ø  Computationally efficient method
 ## PROGRAM
+```
 Name :DHARSHINI.S
 Register Number : 212221220009
+```
 ## Importing libraries
 import pandas as pd
 from sklearn.model_selection import train_test_split
